@@ -1,4 +1,5 @@
 #include "DetectorConstruction.hh"
+#include "DetectorMessenger.hh"
 #include "SensitiveDetector.hh"
 
 #include "G4RunManager.hh"
@@ -9,18 +10,41 @@
 #include "G4SystemOfUnits.hh"
 #include "G4VisAttributes.hh"
 
+
+//extra includes to make rotation possible
+#include "G4GeometryManager.hh"
+#include "G4PhysicalVolumeStore.hh"
+#include "G4LogicalVolumeStore.hh"
+#include "G4SolidStore.hh"
+
 #include "G4SDManager.hh"
+
 
 DetectorConstruction::DetectorConstruction():
 	G4VUserDetectorConstruction(),
-	fScoringVolume(0)
-{}
+	fScoringVolume(0),
+	fRotationMatrix(0)
+{
+	fRotationMatrix = new G4RotationMatrix();
+	fRotationMatrix->rotateY(0.);
+	std::cout << "Constructor called!" << std::endl;
+	  fDetectorMessenger = new DetectorMessenger(this);
+	  //new DetectorMessenger;
+	//fDetectorMessenger = new DetectorMessenger;
+}
 
 DetectorConstruction::~DetectorConstruction()
-{}
+{
+delete fDetectorMessenger;
+}
 
 G4VPhysicalVolume* DetectorConstruction::Construct()
 {
+	  // Cleanup old geometry
+  G4GeometryManager::GetInstance()->OpenGeometry();
+  G4PhysicalVolumeStore::GetInstance()->Clean();
+  G4LogicalVolumeStore::GetInstance()->Clean();
+  G4SolidStore::GetInstance()->Clean();
 	G4NistManager* nist = G4NistManager::Instance(); //nist material manager
 
 	//envelope parameters
@@ -97,7 +121,10 @@ G4VPhysicalVolume* DetectorConstruction::Construct()
 							bone_mat,
 							"BoxBone");
 
-	new G4PVPlacement(0,
+	//G4RotationMatrix* yRot = new G4RotationMatrix;
+	//yRot->rotateY(M_PI/4.*rad);
+
+	new G4PVPlacement(fRotationMatrix,
 					  pos_box,
 					  logicBox,
 					  "BoxBone",
@@ -164,3 +191,14 @@ void DetectorConstruction::ConstructSDandField()
 	//G4SDManager* SDman = G4SDManager::GetSDMpointer();
 	//SDman->AddNewDetector(senseDetector);
 }
+
+void DetectorConstruction::SetRotationAngle(G4double newValue) 
+{
+	std::cout << newValue << std::endl;
+	*fRotationMatrix = G4RotationMatrix();  // make it unit vector
+    fRotationMatrix->rotateY(newValue);
+    
+    // tell G4RunManager that we change the geometry
+    G4RunManager::GetRunManager()->GeometryHasBeenModified();
+}
+	

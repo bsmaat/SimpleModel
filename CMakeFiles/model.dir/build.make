@@ -153,9 +153,33 @@ CMakeFiles/model.dir/src/SensitiveDetector.cc.o.provides: CMakeFiles/model.dir/s
 CMakeFiles/model.dir/src/SensitiveDetector.cc.o.provides.build: CMakeFiles/model.dir/src/SensitiveDetector.cc.o
 
 
+CMakeFiles/model.dir/src/DetectorMessenger.cc.o: CMakeFiles/model.dir/flags.make
+CMakeFiles/model.dir/src/DetectorMessenger.cc.o: src/DetectorMessenger.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/billy/geant/model2/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/model.dir/src/DetectorMessenger.cc.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/model.dir/src/DetectorMessenger.cc.o -c /home/billy/geant/model2/src/DetectorMessenger.cc
+
+CMakeFiles/model.dir/src/DetectorMessenger.cc.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/model.dir/src/DetectorMessenger.cc.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/billy/geant/model2/src/DetectorMessenger.cc > CMakeFiles/model.dir/src/DetectorMessenger.cc.i
+
+CMakeFiles/model.dir/src/DetectorMessenger.cc.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/model.dir/src/DetectorMessenger.cc.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/billy/geant/model2/src/DetectorMessenger.cc -o CMakeFiles/model.dir/src/DetectorMessenger.cc.s
+
+CMakeFiles/model.dir/src/DetectorMessenger.cc.o.requires:
+
+.PHONY : CMakeFiles/model.dir/src/DetectorMessenger.cc.o.requires
+
+CMakeFiles/model.dir/src/DetectorMessenger.cc.o.provides: CMakeFiles/model.dir/src/DetectorMessenger.cc.o.requires
+	$(MAKE) -f CMakeFiles/model.dir/build.make CMakeFiles/model.dir/src/DetectorMessenger.cc.o.provides.build
+.PHONY : CMakeFiles/model.dir/src/DetectorMessenger.cc.o.provides
+
+CMakeFiles/model.dir/src/DetectorMessenger.cc.o.provides.build: CMakeFiles/model.dir/src/DetectorMessenger.cc.o
+
+
 CMakeFiles/model.dir/src/ModelRunAction.cc.o: CMakeFiles/model.dir/flags.make
 CMakeFiles/model.dir/src/ModelRunAction.cc.o: src/ModelRunAction.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/billy/geant/model2/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/model.dir/src/ModelRunAction.cc.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/billy/geant/model2/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/model.dir/src/ModelRunAction.cc.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/model.dir/src/ModelRunAction.cc.o -c /home/billy/geant/model2/src/ModelRunAction.cc
 
 CMakeFiles/model.dir/src/ModelRunAction.cc.i: cmake_force
@@ -179,7 +203,7 @@ CMakeFiles/model.dir/src/ModelRunAction.cc.o.provides.build: CMakeFiles/model.di
 
 CMakeFiles/model.dir/src/ActionInitialization.cc.o: CMakeFiles/model.dir/flags.make
 CMakeFiles/model.dir/src/ActionInitialization.cc.o: src/ActionInitialization.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/billy/geant/model2/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/model.dir/src/ActionInitialization.cc.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/billy/geant/model2/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/model.dir/src/ActionInitialization.cc.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/model.dir/src/ActionInitialization.cc.o -c /home/billy/geant/model2/src/ActionInitialization.cc
 
 CMakeFiles/model.dir/src/ActionInitialization.cc.i: cmake_force
@@ -203,7 +227,7 @@ CMakeFiles/model.dir/src/ActionInitialization.cc.o.provides.build: CMakeFiles/mo
 
 CMakeFiles/model.dir/src/PrimaryGeneratorAction.cc.o: CMakeFiles/model.dir/flags.make
 CMakeFiles/model.dir/src/PrimaryGeneratorAction.cc.o: src/PrimaryGeneratorAction.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/billy/geant/model2/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/model.dir/src/PrimaryGeneratorAction.cc.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/billy/geant/model2/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/model.dir/src/PrimaryGeneratorAction.cc.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/model.dir/src/PrimaryGeneratorAction.cc.o -c /home/billy/geant/model2/src/PrimaryGeneratorAction.cc
 
 CMakeFiles/model.dir/src/PrimaryGeneratorAction.cc.i: cmake_force
@@ -231,6 +255,7 @@ model_OBJECTS = \
 "CMakeFiles/model.dir/src/DetectorHit.cc.o" \
 "CMakeFiles/model.dir/src/DetectorConstruction.cc.o" \
 "CMakeFiles/model.dir/src/SensitiveDetector.cc.o" \
+"CMakeFiles/model.dir/src/DetectorMessenger.cc.o" \
 "CMakeFiles/model.dir/src/ModelRunAction.cc.o" \
 "CMakeFiles/model.dir/src/ActionInitialization.cc.o" \
 "CMakeFiles/model.dir/src/PrimaryGeneratorAction.cc.o"
@@ -242,6 +267,7 @@ model: CMakeFiles/model.dir/model.cc.o
 model: CMakeFiles/model.dir/src/DetectorHit.cc.o
 model: CMakeFiles/model.dir/src/DetectorConstruction.cc.o
 model: CMakeFiles/model.dir/src/SensitiveDetector.cc.o
+model: CMakeFiles/model.dir/src/DetectorMessenger.cc.o
 model: CMakeFiles/model.dir/src/ModelRunAction.cc.o
 model: CMakeFiles/model.dir/src/ActionInitialization.cc.o
 model: CMakeFiles/model.dir/src/PrimaryGeneratorAction.cc.o
@@ -285,7 +311,7 @@ model: /home/billy/geant/geant4.10.2-install/lib/libG4intercoms.so
 model: /home/billy/geant/geant4.10.2-install/lib/libG4global.so
 model: /home/billy/geant/geant4.10.2-install/lib/libG4clhep.so
 model: CMakeFiles/model.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/billy/geant/model2/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Linking CXX executable model"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/billy/geant/model2/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Linking CXX executable model"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/model.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -297,6 +323,7 @@ CMakeFiles/model.dir/requires: CMakeFiles/model.dir/model.cc.o.requires
 CMakeFiles/model.dir/requires: CMakeFiles/model.dir/src/DetectorHit.cc.o.requires
 CMakeFiles/model.dir/requires: CMakeFiles/model.dir/src/DetectorConstruction.cc.o.requires
 CMakeFiles/model.dir/requires: CMakeFiles/model.dir/src/SensitiveDetector.cc.o.requires
+CMakeFiles/model.dir/requires: CMakeFiles/model.dir/src/DetectorMessenger.cc.o.requires
 CMakeFiles/model.dir/requires: CMakeFiles/model.dir/src/ModelRunAction.cc.o.requires
 CMakeFiles/model.dir/requires: CMakeFiles/model.dir/src/ActionInitialization.cc.o.requires
 CMakeFiles/model.dir/requires: CMakeFiles/model.dir/src/PrimaryGeneratorAction.cc.o.requires

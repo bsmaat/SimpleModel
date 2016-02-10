@@ -231,6 +231,33 @@ src/DetectorHit.cc.s:
 	$(MAKE) -f CMakeFiles/model.dir/build.make CMakeFiles/model.dir/src/DetectorHit.cc.s
 .PHONY : src/DetectorHit.cc.s
 
+src/DetectorMessenger.o: src/DetectorMessenger.cc.o
+
+.PHONY : src/DetectorMessenger.o
+
+# target to build an object file
+src/DetectorMessenger.cc.o:
+	$(MAKE) -f CMakeFiles/model.dir/build.make CMakeFiles/model.dir/src/DetectorMessenger.cc.o
+.PHONY : src/DetectorMessenger.cc.o
+
+src/DetectorMessenger.i: src/DetectorMessenger.cc.i
+
+.PHONY : src/DetectorMessenger.i
+
+# target to preprocess a source file
+src/DetectorMessenger.cc.i:
+	$(MAKE) -f CMakeFiles/model.dir/build.make CMakeFiles/model.dir/src/DetectorMessenger.cc.i
+.PHONY : src/DetectorMessenger.cc.i
+
+src/DetectorMessenger.s: src/DetectorMessenger.cc.s
+
+.PHONY : src/DetectorMessenger.s
+
+# target to generate assembly for a file
+src/DetectorMessenger.cc.s:
+	$(MAKE) -f CMakeFiles/model.dir/build.make CMakeFiles/model.dir/src/DetectorMessenger.cc.s
+.PHONY : src/DetectorMessenger.cc.s
+
 src/ModelRunAction.o: src/ModelRunAction.cc.o
 
 .PHONY : src/ModelRunAction.o
@@ -333,6 +360,9 @@ help:
 	@echo "... src/DetectorHit.o"
 	@echo "... src/DetectorHit.i"
 	@echo "... src/DetectorHit.s"
+	@echo "... src/DetectorMessenger.o"
+	@echo "... src/DetectorMessenger.i"
+	@echo "... src/DetectorMessenger.s"
 	@echo "... src/ModelRunAction.o"
 	@echo "... src/ModelRunAction.i"
 	@echo "... src/ModelRunAction.s"

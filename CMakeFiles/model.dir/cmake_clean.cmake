@@ -3,6 +3,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/model.dir/src/DetectorHit.cc.o"
   "CMakeFiles/model.dir/src/DetectorConstruction.cc.o"
   "CMakeFiles/model.dir/src/SensitiveDetector.cc.o"
+  "CMakeFiles/model.dir/src/DetectorMessenger.cc.o"
   "CMakeFiles/model.dir/src/ModelRunAction.cc.o"
   "CMakeFiles/model.dir/src/ActionInitialization.cc.o"
   "CMakeFiles/model.dir/src/PrimaryGeneratorAction.cc.o"

@@ -23,45 +23,46 @@
 // * acceptance of all terms of the Geant4 Software license.          *
 // ********************************************************************
 //
-// $Id: B1DetectorConstruction.hh 69565 2013-05-08 12:35:31Z gcosmo $
+/// \file electromagnetic/TestEm1/include/DetectorMessenger.hh
+/// \brief Definition of the DetectorMessenger class
 //
-/// \file B1DetectorConstruction.hh
-/// \brief Definition of the B1DetectorConstruction class
+// $Id: DetectorMessenger.hh 77081 2013-11-21 10:35:09Z gcosmo $
+//
+//....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
+//....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
-#ifndef DetectorConstruction_h
-#define DetectorConstruction_h 1
+#ifndef DetectorMessenger_h
+#define DetectorMessenger_h 1
 
-#include "G4VUserDetectorConstruction.hh"
+#include "G4UImessenger.hh"
 #include "globals.hh"
-#include "G4RotationMatrix.hh"
 
+class DetectorConstruction;
+class G4UIdirectory;
+class G4UIcmdWithAString;
+class G4UIcmdWithADoubleAndUnit;
+class G4UIcmdWithoutParameter;
 
-class G4VPhysicalVolume;
-class G4LogicalVolume;
-class DetectorMessenger;
+//....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
-/// Detector construction class to define materials and geometry.
-
-class DetectorConstruction : public G4VUserDetectorConstruction
+class DetectorMessenger: public G4UImessenger
 {
   public:
-    DetectorConstruction();
-    virtual ~DetectorConstruction();
+  
+    DetectorMessenger(DetectorConstruction* );
+   ~DetectorMessenger();
     
-    virtual G4VPhysicalVolume* Construct();
-	virtual void ConstructSDandField();
-	
-    G4LogicalVolume* GetScoringVolume() const { return fScoringVolume; }
-    
-    void SetRotationAngle(G4double);
-
+    virtual void SetNewValue(G4UIcommand*, G4String);
     
   private:
-       DetectorMessenger* fDetectorMessenger;
-       //G4Cache<G4GlobalMagFieldMessenger*> fFieldMessenger;
-       G4RotationMatrix* fRotationMatrix;
-  protected:
-    G4LogicalVolume*  fScoringVolume;
+  
+    DetectorConstruction*      fDetector;
+    
+    G4UIdirectory*             fTestemDir;
+    G4UIdirectory*             fDetDir;
+    G4UIcmdWithAString*        fMaterCmd;
+    G4UIcmdWithADoubleAndUnit* fSizeCmd;
+    G4UIcmdWithADoubleAndUnit* fAngleCmd;
 };
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......

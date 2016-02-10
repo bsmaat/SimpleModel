@@ -51,6 +51,7 @@ G4bool SensitiveDetector::ProcessHits(G4Step* aStep, G4TouchableHistory* ROhist)
 	DetectorHit* aHit = new DetectorHit();
 	// some set methods go here
 	aHit->SetTrackID(aStep->GetTrack()->GetTrackID());
+	aHit->SetParentID(aStep->GetTrack()->GetParentID());
 	aHit->SetChamberNb(aStep->GetPreStepPoint()->GetTouchableHandle()->GetCopyNumber());
 	aHit->SetEdep(edep);
 	aHit->SetKE(aStep->GetTrack()->GetKineticEnergy());
@@ -68,12 +69,12 @@ G4bool SensitiveDetector::ProcessHits(G4Step* aStep, G4TouchableHistory* ROhist)
 		// would like to find some documentation on GetProcessName()
 		if (procName == "Transportation") 
 		{	
-			//now I would need to check if it's a proton
-			if(aHit->GetParticle()->GetParticleName() == "proton") 
+			//now I would need to check if it's a (primary) proton 
+			if(aHit->GetParticle()->GetParticleName() == "proton" && aHit->GetParentID() == 0) 
 			{
 				aHit->Draw();
 				//need to store initial data (from chamber 0) and final data from chamber 1
-				WriteToFileInitial(aHit);
+				WriteToFile(aHit);
 			}
 		}
 	}
@@ -139,45 +140,25 @@ void SensitiveDetector::CreateAnalysisManager()
   analysisManager->FinishNtuple();
 }
 
-void SensitiveDetector::WriteToFileInitial(DetectorHit* aHit) 
-{
-				G4AnalysisManager* analysisManager = G4AnalysisManager::Instance();
-
-			// I need to store initial energy, final energy, position and momentum
-			// maybe there is an easier way to do this for G4ThreeVector()
-			std::cout << "FILLING" << std::endl;
-			analysisManager->FillNtupleDColumn(0, aHit->GetKE());
-			analysisManager->FillNtupleDColumn(1, aHit->GetPos().getX());
-			analysisManager->FillNtupleDColumn(2, aHit->GetPos().getY());
-			analysisManager->FillNtupleDColumn(3, aHit->GetPos().getZ());
-			analysisManager->FillNtupleDColumn(4, aHit->GetMom().getX());
-			analysisManager->FillNtupleDColumn(5, aHit->GetMom().getY());
-			analysisManager->FillNtupleDColumn(6, aHit->GetMom().getZ());
-			std::cout<< aHit->GetChamberNb() << std::endl;
-			analysisManager->FillNtupleIColumn(7, aHit->GetChamberNb());
-			analysisManager->FillNtupleIColumn(8, aHit->GetTrackID());
-			analysisManager->AddNtupleRow();
-			//std::cout << "HERE!" << std::endl;
-}
-
-void SensitiveDetector::WriteToFileFinal(DetectorHit* aHit) 
+void SensitiveDetector::WriteToFile(DetectorHit* aHit) 
 {
 			G4AnalysisManager* analysisManager = G4AnalysisManager::Instance();
-
+			G4int tmp = 9*aHit->GetChamberNb();
 			// I need to store initial energy, final energy, position and momentum
 			// maybe there is an easier way to do this for G4ThreeVector()
-			std::cout << "FILLING" << std::endl;
-			analysisManager->FillNtupleDColumn(0, aHit->GetKE());
-			analysisManager->FillNtupleDColumn(1, aHit->GetPos().getX());
-			analysisManager->FillNtupleDColumn(2, aHit->GetPos().getY());
-			analysisManager->FillNtupleDColumn(3, aHit->GetPos().getZ());
-			analysisManager->FillNtupleDColumn(4, aHit->GetMom().getX());
-			analysisManager->FillNtupleDColumn(5, aHit->GetMom().getY());
-			analysisManager->FillNtupleDColumn(6, aHit->GetMom().getZ());
-			std::cout<< aHit->GetChamberNb() << std::endl;
-			analysisManager->FillNtupleIColumn(7, aHit->GetChamberNb());
-			analysisManager->FillNtupleIColumn(8, aHit->GetTrackID());
+			analysisManager->FillNtupleDColumn(0 + tmp, aHit->GetKE());
+			analysisManager->FillNtupleDColumn(1 + tmp, aHit->GetPos().getX());
+			analysisManager->FillNtupleDColumn(2 + tmp, aHit->GetPos().getY());
+			analysisManager->FillNtupleDColumn(3 + tmp, aHit->GetPos().getZ());
+			analysisManager->FillNtupleDColumn(4 + tmp, aHit->GetMom().getX());
+			analysisManager->FillNtupleDColumn(5 + tmp, aHit->GetMom().getY());
+			analysisManager->FillNtupleDColumn(6 + tmp, aHit->GetMom().getZ());
+			analysisManager->FillNtupleIColumn(7 + tmp, aHit->GetChamberNb());
+			analysisManager->FillNtupleIColumn(8 + tmp, aHit->GetParentID());
+			
+			if(aHit->GetChamberNb() == 1) 
 			analysisManager->AddNtupleRow();
 			//std::cout << "HERE!" << std::endl;
 }
+
 	

@@ -20,8 +20,7 @@ class SensitiveDetector : public G4VSensitiveDetector
 	
 	private:
 	void CreateAnalysisManager();
-	void WriteToFileInitial(DetectorHit*);
-	void WriteToFileFinal(DetectorHit*);
+	void WriteToFile(DetectorHit*);
 	DetectorHitsCollection * fHitsCollection;
 	G4int collectionID;
 };

@@ -29,6 +29,7 @@ class DetectorHit : public G4VHit
 	
     // Set methods
     void SetTrackID  (G4int track)      { fTrackID = track; };
+    void SetParentID  (G4int parent)      { fParentID = parent; };
     void SetChamberNb(G4int chamb)      { fChamberNb = chamb; };
     void SetEdep     (G4double de)      { fEdep = de; };
     void SetKE 		 (G4double ke) 		{ fKE = ke; };
@@ -38,6 +39,7 @@ class DetectorHit : public G4VHit
 
     // Get methods
     G4int GetTrackID() const     { return fTrackID; };
+    G4int GetParentID() const     { return fParentID; };
     G4int GetChamberNb() const   { return fChamberNb; };
     G4double GetEdep() const     { return fEdep; };
     G4double GetKE() const 		 { return fKE; };
@@ -48,7 +50,7 @@ class DetectorHit : public G4VHit
 	
 	private:
 	//some data members;
-	G4int fTrackID, fChamberNb;
+	G4int fTrackID, fChamberNb, fParentID;
 	G4double fEdep, fKE;
 	G4ThreeVector fPos, fMom;
 	G4ParticleDefinition* fParticle;
